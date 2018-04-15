@@ -1,0 +1,74 @@
+ {Oliver Kiessling}
+ 
+ @import compass;
+
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:700|Pacifico|Changa+One);
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+ 
+
+.weatherwidget-io {
+margin: 15px;
+text-align: center; }
+ 
+.container {
+  font-family: 'Pacifico', cursive;
+  font-weight: normal;
+  margin: 80px auto;
+  width: 1000px;
+  font-size: 30px;
+  text-align: center;
+  border-left: 20px solid green;
+border-right: 20px solid green;
+  }
+  
+  
+.line-2 {
+  font-family: 'Changa One', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 90px;
+  letter-spacing: 15px;
+  margin: 5px;
+  }
+
+.line-3 {
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+  position: relative;
+  margin: 80px auto;
+  width: 600px;
+  font-size: 30px;
+  text-align: center;
+  text-align: center;
+  }  
+  .input {
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+  position: relative;
+  margin: auto;
+  width: 100px;
+  text-align: center;
+  font-size: 15px;
+  }  
+
+  .button {
+font-family: 'Changa One', sans-serif;
+  text-transform: uppercase;
+  font-size: 15px;
+  margin: auto; } 
+  
+  .about {
+  font-size: 18px;
+  font-weight: normal;
+  font-family: 'Open Sans', sans-serif;
+margin: auto;
+width: 800px;
+padding: 25px  }
+
+ .solution5 {
+ color: red ; }
+  
+  
+
+ 
+  

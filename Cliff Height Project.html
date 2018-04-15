@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="CliffHeighProject.css">
+<title>Cliff Height Project</title>
+</head>
+<body class="container">
+<script type="text/javascript">
+    var D = document;
+
+    function calcVsound(){
+        //get the inputted value
+        var temp = D.getElementById('tempInput').value;
+        //make it numeric
+        var numericTemp = parseFloat(temp);
+        //calculate sound velocity
+        return getVsound(numericTemp);
+    }
+
+    function getVsound(temp){
+        //The constant value
+        var sp = 331;
+        //The division inside the root
+        var div = temp/273;
+        //The square root
+        var Droot = Math.sqrt(1+div);
+        //The result
+        return sp*Droot;
+    }
+
+    function gettingAvalue(){
+        //calculating the value of "A" Step "2"
+        var Vsound = calcVsound();
+        var A = 9.81/(2*Vsound);
+        return A;
+    }
+
+    function getInputTime(){
+        //get Time from the input
+        var time = D.getElementById('timeInput').value;
+        //make it numeric
+        var numericTime = parseFloat(time);
+        //see if it is negative
+        if(numericTime<0){
+            //return if negative
+            return numericTime;
+        }else{
+            //return negative value of time
+            return (numericTime*(-1));  
+        }
+    }
+
+    function solveQuadratic(){
+        //The value of -b
+        var B = -1;
+        //The value of c
+        var C = getInputTime();
+        //The value of a
+        var A = gettingAvalue();
+        //Calculating b^2
+        var Epow = Math.pow(B,2);
+        //Calculating b^2 - 4ac 
+        var InsideRoot = Epow - (4*A*C);
+        //Calculating squareroot of b^2 - 4ac
+        var Eroot = Math.sqrt(InsideRoot);
+        //Getting the two roots
+        var x_1 = (B+Eroot)/(2*A);
+        var x_2 = (B-Eroot)/(2*A);
+        //Getting the positive one
+        if(x_2>x_1){
+            return x_2;
+        }else{
+            return x_1;
+        }
+    }
+
+    function getHeight(){
+        //Solve the quadratic formula
+        var quad = solveQuadratic();
+        var quad_pow = Math.pow(quad,2);
+        //use the formula to calculate height
+        var solution1 = (9.81*quad_pow)/2;
+		//round to two decimal places
+		var solution = Math.round(solution1*100)/100
+        //Show it on screen
+        D.getElementById('solution').innerHTML = solution;
+    }
+
+	
+</script>	
+	<span class="line-3">The</span>
+	<span class="line-2">Cliff Height Project</span>
+	<a class="weatherwidget-io" href="https://forecast7.com/en/43d65n79d38/toronto/" data-label_1="TORONTO" data-label_2="WEATHER" data-font="Ubuntu" data-icons="Climacons Animated" data-mode="Current" data-theme="pure" >TORONTO WEATHER</a>
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+</script>
+<div>
+    <span>Temperature:</span>
+    <input type="number" name="Temperature" id="tempInput" class="input">
+	<span>°C</span>
+</div>
+<div>
+    <span>Time:</span>
+    <input type="number" name="Time" id="timeInput" class="input">
+	<span>s</span>
+</div>
+<div>
+    <button onclick="getHeight()" class="button">
+        CALCULATE
+    </button>
+</div>
+<div>
+    <p id="solution" class="solution5">
+
+    </p>
+	<p class="about"> Answers are in:  <b>meters</b></p>
+</div>
+<div>
+<p class="about"> <b>About:</b><br>Simple wesbite that allows you to measure the height of cliff using time for object to hit the ground. Input current outdoor temperature in '°C' as we incorporate the speed of sound correction for diffirent temperatures. By inputting the time, the website interprets this as the time total you recorded as 1) The time for the object to hit the ground 2) The time for the sound to travel back to your ears. By telling us the temperature, we can more accuratly calculate the second time. <br>~~ Enjoy! ~~</br> </br></p>
+</div>
+</body> 
+</html>
